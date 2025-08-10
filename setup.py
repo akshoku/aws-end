@@ -1,4 +1,3 @@
-
 from setuptools import find_packages,setup
 from typing import List
 
@@ -17,12 +16,12 @@ def get_requirements(file_path:str)->List[str]:
     
     return requirements
 
-
 setup(
-name='ml-aws-project'
-version='0.0.1'
-author='Akshit'
-author_email='akshitsingh97@gmail.com'
-packages=find_packages()
-install_requires =  get_requirements('requirements.txt')
+name='aws-ml-end',
+version='0.0.1',
+author='Akshit',
+author_email='akshitsingh97@gmail.com',
+packages=find_packages(),
+install_requires=get_requirements('requirements.txt')
+
 )
