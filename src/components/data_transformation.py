@@ -20,7 +20,7 @@ from src.utils import save_object
 
 @dataclass
 class DataTransformationConfig:
-    preprocessor_obj_file_path=os.path.join('artifacts',"prerocessor.pkl")
+    preprocessor_obj_file_path=os.path.join('artifacts',"preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -96,6 +96,11 @@ class DataTransformation:
             test_df['income'] = test_df['income'].map({'<=50K': 0, '>50K': 1})
 
             logging.info("Obtaining preprocessing object")
+
+            train_df = train_df.replace("?","Unknown")
+            test_df = test_df.replace("?","Unknown")
+            train_df.drop("education", axis=1, inplace = True)
+            test_df.drop("education", axis=1, inplace = True)
 
             preprocessing_obj=self.get_data_transformer_object()
 

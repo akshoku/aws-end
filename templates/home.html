@@ -1,0 +1,223 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Income Prediction Form</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Income Prediction</legend>
+        </h1>
+
+        <!-- Age -->
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <input class="form-control" type="number" name="age" placeholder="Enter Age" required>
+        </div>
+
+        <!-- Workclass -->
+        <div class="mb-3">
+            <label class="form-label">Workclass</label>
+            <select class="form-control" name="workclass" required>
+                <option selected disabled value="">Select Workclass</option>
+                <option value="?">?</option>
+                <option value="Private">Private</option>
+                <option value="State-gov">State-gov</option>
+                <option value="Federal-gov">Federal-gov</option>
+                <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                <option value="Self-emp-inc">Self-emp-inc</option>
+                <option value="Local-gov">Local-gov</option>
+                <option value="Without-pay">Without-pay</option>
+                <option value="Never-worked">Never-worked</option>
+            </select>
+        </div>
+
+        <!-- fnlwgt -->
+        <div class="mb-3">
+            <label class="form-label">Final Weight (fnlwgt)</label>
+            <input class="form-control" type="number" name="fnlwgt" placeholder="Enter fnlwgt" required>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-3">
+            <label class="form-label">Education</label>
+            <select class="form-control" name="education" required>
+                <option selected disabled value="">Select Education</option>
+                <option>HS-grad</option>
+                <option>Some-college</option>
+                <option>7th-8th</option>
+                <option>10th</option>
+                <option>Doctorate</option>
+                <option>Prof-school</option>
+                <option>Bachelors</option>
+                <option>Masters</option>
+                <option>11th</option>
+                <option>Assoc-acdm</option>
+                <option>Assoc-voc</option>
+                <option>1st-4th</option>
+                <option>5th-6th</option>
+                <option>12th</option>
+                <option>9th</option>
+                <option>Preschool</option>
+            </select>
+        </div>
+
+        <!-- Education Num -->
+        <div class="mb-3">
+            <label class="form-label">Education Number</label>
+            <input class="form-control" type="number" name="education_num" placeholder="Enter Education Number" required>
+        </div>
+
+        <!-- Marital Status -->
+        <div class="mb-3">
+            <label class="form-label">Marital Status</label>
+            <select class="form-control" name="marital_status" required>
+                <option selected disabled value="">Select Marital Status</option>
+                <option>Widowed</option>
+                <option>Divorced</option>
+                <option>Separated</option>
+                <option>Never-married</option>
+                <option>Married-civ-spouse</option>
+                <option>Married-spouse-absent</option>
+                <option>Married-AF-spouse</option>
+            </select>
+        </div>
+
+        <!-- Occupation -->
+        <div class="mb-3">
+            <label class="form-label">Occupation</label>
+            <select class="form-control" name="occupation" required>
+                <option selected disabled value="">Select Occupation</option>
+                <option>?</option>
+                <option>Exec-managerial</option>
+                <option>Machine-op-inspct</option>
+                <option>Prof-specialty</option>
+                <option>Other-service</option>
+                <option>Adm-clerical</option>
+                <option>Craft-repair</option>
+                <option>Transport-moving</option>
+                <option>Handlers-cleaners</option>
+                <option>Sales</option>
+                <option>Farming-fishing</option>
+                <option>Tech-support</option>
+                <option>Protective-serv</option>
+                <option>Armed-Forces</option>
+                <option>Priv-house-serv</option>
+            </select>
+        </div>
+
+        <!-- Relationship -->
+        <div class="mb-3">
+            <label class="form-label">Relationship</label>
+            <select class="form-control" name="relationship" required>
+                <option selected disabled value="">Select Relationship</option>
+                <option>Not-in-family</option>
+                <option>Unmarried</option>
+                <option>Own-child</option>
+                <option>Other-relative</option>
+                <option>Husband</option>
+                <option>Wife</option>
+            </select>
+        </div>
+
+        <!-- Race -->
+        <div class="mb-3">
+            <label class="form-label">Race</label>
+            <select class="form-control" name="race" required>
+                <option selected disabled value="">Select Race</option>
+                <option>White</option>
+                <option>Black</option>
+                <option>Asian-Pac-Islander</option>
+                <option>Other</option>
+                <option>Amer-Indian-Eskimo</option>
+            </select>
+        </div>
+
+        <!-- Sex -->
+        <div class="mb-3">
+            <label class="form-label">Sex</label>
+            <select class="form-control" name="sex" required>
+                <option selected disabled value="">Select Sex</option>
+                <option>Female</option>
+                <option>Male</option>
+            </select>
+        </div>
+
+        <!-- Capital Gain -->
+        <div class="mb-3">
+            <label class="form-label">Capital Gain</label>
+            <input class="form-control" type="number" name="capital_gain" placeholder="Enter Capital Gain" required>
+        </div>
+
+        <!-- Capital Loss -->
+        <div class="mb-3">
+            <label class="form-label">Capital Loss</label>
+            <input class="form-control" type="number" name="capital_loss" placeholder="Enter Capital Loss" required>
+        </div>
+
+        <!-- Hours per week -->
+        <div class="mb-3">
+            <label class="form-label">Hours per Week</label>
+            <input class="form-control" type="number" name="hours_per_week" placeholder="Enter Hours per Week" required>
+        </div>
+
+        <!-- Native Country -->
+        <div class="mb-3">
+            <label class="form-label">Native Country</label>
+            <select class="form-control" name="native_country" required>
+                <option selected disabled value="">Select Country</option>
+                <option>United-States</option>
+                <option>?</option>
+                <option>Mexico</option>
+                <option>Greece</option>
+                <option>Vietnam</option>
+                <option>China</option>
+                <option>Taiwan</option>
+                <option>India</option>
+                <option>Philippines</option>
+                <option>Trinadad&Tobago</option>
+                <option>Canada</option>
+                <option>South</option>
+                <option>Holand-Netherlands</option>
+                <option>Puerto-Rico</option>
+                <option>Poland</option>
+                <option>Iran</option>
+                <option>England</option>
+                <option>Germany</option>
+                <option>Italy</option>
+                <option>Japan</option>
+                <option>Hong</option>
+                <option>Honduras</option>
+                <option>Cuba</option>
+                <option>Ireland</option>
+                <option>Cambodia</option>
+                <option>Peru</option>
+                <option>Nicaragua</option>
+                <option>Dominican-Republic</option>
+                <option>Haiti</option>
+                <option>El-Salvador</option>
+                <option>Hungary</option>
+                <option>Columbia</option>
+                <option>Guatemala</option>
+                <option>Jamaica</option>
+                <option>Ecuador</option>
+                <option>France</option>
+                <option>Yugoslavia</option>
+                <option>Scotland</option>
+                <option>Portugal</option>
+                <option>Laos</option>
+                <option>Thailand</option>
+                <option>Outlying-US(Guam-USVI-etc)</option>
+            </select>
+        </div>
+
+        <!-- Submit -->
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict Income" required />
+        </div>
+    </form>
+
+    <h2>
+       Prediction: {{ results }}
+    </h2>
+   <body>
+</html>

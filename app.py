@@ -20,16 +20,22 @@ def predict_datapoint():
     if request.method=='GET':
         return render_template('home.html')
     else:
-        data=CustomData(
-            gender=request.form.get('gender'),
-            race_ethnicity=request.form.get('ethnicity'),
-            parental_level_of_education=request.form.get('parental_level_of_education'),
-            lunch=request.form.get('lunch'),
-            test_preparation_course=request.form.get('test_preparation_course'),
-            reading_score=float(request.form.get('writing_score')),
-            writing_score=float(request.form.get('reading_score'))
-
-        )
+        data = CustomData(
+            age=int(request.form.get('age')),
+            workclass=request.form.get('workclass'),
+            fnlwgt=int(request.form.get('fnlwgt')),
+            education=request.form.get('education'),
+            education_num=int(request.form.get('education_num')),
+            marital_status=request.form.get('marital_status'),
+            occupation=request.form.get('occupation'),
+            relationship=request.form.get('relationship'),
+            race=request.form.get('race'),
+            sex=request.form.get('sex'),
+            capital_gain=int(request.form.get('capital_gain')),
+            capital_loss=int(request.form.get('capital_loss')),
+            hours_per_week=int(request.form.get('hours_per_week')),
+            native_country=request.form.get('native_country')
+)
         pred_df=data.get_data_as_data_frame()
         print(pred_df)
         print("Before Prediction")
