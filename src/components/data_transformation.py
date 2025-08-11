@@ -1,6 +1,10 @@
 import sys
 from dataclasses import dataclass
 
+from imblearn.over_sampling import ADASYN
+from collections import Counter
+
+
 import numpy as np 
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -113,6 +117,10 @@ class DataTransformation:
             input_feature_train_arr = preprocessing_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessing_obj.transform(input_feature_test_df)
 
+            # Oversampling the train dataset using ADASYN
+            # ada = ADASYN(random_state=130)
+            # X_train, y_train = ada.fit_resample(X_train, y_train)
+
             # Reshape target arrays to column vectors to avoid zero-dimensional errors
             target_feature_train_arr = np.array(target_feature_train_df).reshape(-1, 1)
             target_feature_test_arr = np.array(target_feature_test_df).reshape(-1, 1)
@@ -130,11 +138,34 @@ class DataTransformation:
             print("target_feature_train_arr shape:", target_feature_train_arr.shape)
             print("input_feature_test_arr shape:", input_feature_test_arr.shape)
             print("target_feature_test_arr shape:", target_feature_test_arr.shape)
-            train_arr = np.concatenate((input_feature_train_arr, target_feature_train_arr), axis=1)
-            logging.info(f"Train array shape: {train_arr.shape}")
+            
+            # Convert target to 1D array for ADASYN
+            target_feature_train_arr = np.array(target_feature_train_df).ravel()  
+            target_feature_test_arr = np.array(target_feature_test_df).ravel()
 
-            test_arr = np.concatenate((input_feature_test_arr, target_feature_test_arr), axis=1)
-            logging.info(f"Test array shape: {test_arr.shape}")
+            # 🔹 Apply ADASYN oversampling
+            ada = ADASYN(random_state=130)
+            input_feature_train_arr, target_feature_train_arr = ada.fit_resample(
+                input_feature_train_arr, target_feature_train_arr
+            )
+
+            print("After ADASYN:")
+            print("input_feature_train_arr shape:", input_feature_train_arr.shape)
+            print("target_feature_train_arr shape:", target_feature_train_arr.shape)
+
+            # Combine for saving
+            train_arr = np.concatenate(
+                (input_feature_train_arr, target_feature_train_arr.reshape(-1, 1)), axis=1
+            )
+            test_arr = np.concatenate(
+                (input_feature_test_arr, target_feature_test_arr.reshape(-1, 1)), axis=1
+            )
+
+            # train_arr = np.concatenate((input_feature_train_arr, target_feature_train_arr), axis=1)
+            # logging.info(f"Train array shape: {train_arr.shape}")
+
+            # test_arr = np.concatenate((input_feature_test_arr, target_feature_test_arr), axis=1)
+            # logging.info(f"Test array shape: {test_arr.shape}")
 
             logging.info(f"Saved preprocessing object.")
 
@@ -148,6 +179,6 @@ class DataTransformation:
                 test_arr,
                 self.data_transformation_config.preprocessor_obj_file_path,
             )
-# ...existing code...
+
         except Exception as e:
             raise CustomException(e,sys)
