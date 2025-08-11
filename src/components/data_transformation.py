@@ -33,8 +33,6 @@ class DataTransformation:
         '''
         try:
             numerical_columns =['age',
-                                'fnlwgt',
-                                'education.num',
                                 'capital.gain',
                                 'capital.loss',
                                 'hours.per.week']
@@ -99,8 +97,8 @@ class DataTransformation:
 
             train_df = train_df.replace("?","Unknown")
             test_df = test_df.replace("?","Unknown")
-            train_df.drop("education", axis=1, inplace = True)
-            test_df.drop("education", axis=1, inplace = True)
+            train_df.drop(['education.num', 'fnlwgt'], axis=1, inplace = True)
+            test_df.drop(["education.num",'fnlwgt'], axis=1, inplace = True)
 
             preprocessing_obj=self.get_data_transformer_object()
 

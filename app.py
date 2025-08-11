@@ -23,9 +23,9 @@ def predict_datapoint():
         data = CustomData(
             age=int(request.form.get('age')),
             workclass=request.form.get('workclass'),
-            fnlwgt=int(request.form.get('fnlwgt')),
+            # fnlwgt=int(request.form.get('fnlwgt')),
             education=request.form.get('education'),
-            education_num=int(request.form.get('education_num')),
+            # education_num=int(request.form.get('education_num')),
             marital_status=request.form.get('marital_status'),
             occupation=request.form.get('occupation'),
             relationship=request.form.get('relationship'),
