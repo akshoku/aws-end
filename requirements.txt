@@ -6,5 +6,10 @@ scikit-learn
 catboost
 xgboost
 Flask
-
+ipykernel
+imbalanced-learn
+lightgbm
+optuna
+tqdm
+dill
 #-e .
