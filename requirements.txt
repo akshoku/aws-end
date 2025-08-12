@@ -1,17 +1,16 @@
 pandas
 numpy
-seaborn
-matplotlib
+# seaborn
+# matplotlib
 scikit-learn
 catboost
 xgboost
 Flask
-ipykernel
+# ipykernel
 imbalanced-learn
 lightgbm
-optuna
-tqdm
+# optuna
 dill
-python-dotenv
-datetime
--e .
+# python-dotenv
+# datetime
+# -e .
