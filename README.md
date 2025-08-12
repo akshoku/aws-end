@@ -1,2 +1,2 @@
 # aws-end
-End to end project with AWS
+End to end project with AWS Deployment
