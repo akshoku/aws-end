@@ -12,4 +12,6 @@ lightgbm
 optuna
 tqdm
 dill
+python-dotenv
+
 #-e .

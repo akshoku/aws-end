@@ -44,7 +44,15 @@ def predict_datapoint():
         print("Mid Prediction")
         results=predict_pipeline.predict(pred_df)
         print("after Prediction")
-        return render_template('home.html',results=results[0])
+        result = results[0]
+        if result == 1:
+            final_result = "Income > 50K"
+        else:
+            final_result = "Income <= 50K"
+        
+        print(final_result)
+        print(results[0])
+        return render_template('home.html',results=final_result)
     
 
 if __name__=="__main__":
