@@ -1,5 +1,6 @@
 # aws-end
 # End to end project with AWS Deployment
+# Run app.py to create a web server using Flask.
 # The jupyter notebook which has EDA is in the folder 'notebook'
 
 Income Classification
