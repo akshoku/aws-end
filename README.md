@@ -1,6 +1,7 @@
 # aws-end
 # End to end project with AWS Deployment
 # Run app.py to run a web server using Flask.
+# If you want to run the pipeline for model training and selection, run src/components/data_ingestion.py
 # The jupyter notebook which has EDA is in the folder 'notebook'
 
 Income Classification
